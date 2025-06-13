@@ -44,7 +44,7 @@ mod request_body;
 mod response;
 mod row;
 mod row_metadata;
-mod rowbinary;
+pub mod rowbinary;
 #[cfg(feature = "inserter")]
 mod ticks;
 
