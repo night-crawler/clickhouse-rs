@@ -12,7 +12,7 @@ use serde::{
 /// It accepts _a reference to_ a byte slice because it somehow leads to a more
 /// performant generated code than `(&[u8]) -> Result<(T, usize)>` and even
 /// `(&[u8], &mut Option<T>) -> Result<usize>`.
-pub(crate) fn deserialize_from<'data, T: Deserialize<'data>>(input: &mut &'data [u8]) -> Result<T> {
+pub fn deserialize_from<'data, T: Deserialize<'data>>(input: &mut &'data [u8]) -> Result<T> {
     let mut deserializer = RowBinaryDeserializer { input };
     T::deserialize(&mut deserializer)
 }
