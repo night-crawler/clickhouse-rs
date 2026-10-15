@@ -15,7 +15,7 @@ use serde::{
 use std::marker::PhantomData;
 
 /// Serializes `row` using the `RowBinary` format and writes to `buffer`.
-pub(crate) fn serialize_row_binary<B: BufMut, R: Row + Serialize>(
+pub fn serialize_row_binary<B: BufMut, R: Row + Serialize>(
     buffer: B,
     row: &R,
 ) -> Result<()> {
