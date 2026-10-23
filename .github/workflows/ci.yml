@@ -133,7 +133,8 @@ jobs:
 
     # skipped for PRs from forks (no access to secrets)
     # allowing for merge commits, scheduled runs, etc.
-    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == 'ClickHouse/clickhouse-rs'
+    # also skipped entirely outside the upstream repo (forks have no Cloud secrets)
+    if: github.repository == 'ClickHouse/clickhouse-rs' && (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == 'ClickHouse/clickhouse-rs')
 
     steps:
       - uses: actions/checkout@v4
