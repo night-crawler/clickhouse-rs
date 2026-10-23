@@ -39,9 +39,4 @@ jobs:
 
       - name: Release
         run: |
-          cargo release ${{ github.event.inputs.level }} ${{
-            if eq(github.event.inputs.dry-run, 'false') 
-            then '--execute' 
-            else '' 
-            end
-          }}
+          cargo release ${{ github.event.inputs.level }} ${{ github.event.inputs.dry-run == 'false' && '--execute' || '' }}
